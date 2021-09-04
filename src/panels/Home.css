@@ -1,0 +1,29 @@
+.sumstring {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.sumstring__month {
+    display: inline-block;
+    width: 100px;
+}
+
+
+.sumstring__delta {
+    color: green;
+}
+
+
+.result-sum__total {
+    font-size: 1.6em;
+    padding-left: 20px;
+    color: green;
+}
+
+.result-sum__invested {
+    font-size: 1.2em;
+    padding-left: 20px;
+    color: gray;
+}
