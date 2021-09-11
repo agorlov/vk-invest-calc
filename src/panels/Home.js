@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 //import PropTypes from 'prop-types';
 import './Home.css';
-
+import Graph from '../Graph';
+// import Graph2 from '../Graph2';
 import { Panel, PanelHeader, Header, Button, Group, Cell, Div, List, FormItem, Input } from '@vkontakte/vkui';
 
 
@@ -93,13 +94,17 @@ class Home extends Component {
 				</Group>
 
 				<Group header={<Header mode="secondary">Динамика накопления</Header>}>
+
+					<Graph data={this.state['накопление для вывода']}></Graph>
+					{/* <Graph data={this.state['накопление по периодам']}></Graph> */}
+
 					<List>
 						{/* <Cell expandable before={<Div>месяц</Div>}>Сумма, ₽</Cell> */}
 						<div className="sumstring">
 							<div className="sumstring__month">{this.state['период для вывода']}</div> Сумма, ₽
 						</div>
 						{this.state['накопление для вывода'].map(
-							(sum, index) => (<div class="sumstring">
+							(sum, index) => (<div className="sumstring" key={index}>
 												<div className="sumstring__month">{index + 1}</div>
 												{Math.round(sum)}
 												{/* <span className="sumstring__delta">+100</span> */}
