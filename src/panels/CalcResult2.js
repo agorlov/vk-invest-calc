@@ -5,14 +5,14 @@ import { Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 
 import persik from '../img/persik.png';
 import './Persik.css';
-import Graph from '../Graph';
 
 /**
- * Страница с котиком из тестового приложения
+ * @todo Идея в том, чтобы вывести результат расчета на отдельном экране
  * 
- * @todo удалить
+ * @param {} props 
+ * @returns 
  */
-const Persik = props => (
+const CalcResult2 = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderBack onClick={props.go} data-to="home"/>}
@@ -23,9 +23,9 @@ const Persik = props => (
 	</Panel>
 );
 
-Persik.propTypes = {
+CalcResult2.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Persik;
+export default CalcResult2;

@@ -1,5 +1,37 @@
 [<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/services)
 
+# Калькулятор сложного процента (VK Mini App)
+
+Запуск:
+```
+yarn start
+```
+
+Туннель для открытия приложения через интернет:
+```
+env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY_HTTP_PROTO=https PROXY_WS_PROTO=wss PROXY_HOST=localhost PROXY_PORT=10888 vk-tunnel
+```
+(полученный адрес нужно прописать в настройках приложения на vk.com/dev)
+
+Приложение DEV: https://vk.com/app7948254
+
+
+# Развертывание
+
+```
+npm run deploy
+```
+
+For your CI, you can use 
+ > $ env MINI_APPS_ACCESS_TOKEN=216e2ba46174a5ec88da28af8a5baf760a2b84b11cb25b6e8dcb7482952feac7856c9de5f590a7d146b8a yarn deploy
+
+
+# Дела
+
+- наладить вывод для < 5 лет
+- почитать как публиковать мини приложения
+
+
 # Create VK Mini App [![npm][npm]][npm-url] [![deps][deps]][deps-url]
 
 ## How to use

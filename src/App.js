@@ -4,8 +4,13 @@ import { View, ScreenSpinner, AdaptivityProvider, AppRoot } from '@vkontakte/vku
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import CalcResult from './panels/CalcResult';
 
+/**
+ * Расчет сложного процента (Вк Мини-приложение)
+ * 
+ * @author Alexandr Gorlov
+ */
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
@@ -36,7 +41,9 @@ const App = () => {
 			<AppRoot>
 				<View activePanel={activePanel} popout={popout}>
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
-					<Persik id='persik' go={go} />
+					<CalcResult id='result' go={go} />
+					{/* <CalcResult2 id='result2' go={go} /> */}
+					{/* <Persik id='persik' go={go} /> */}
 				</View>
 			</AppRoot>
 		</AdaptivityProvider>

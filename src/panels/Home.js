@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-//import PropTypes from 'prop-types';
 import './Home.css';
 import Graph from '../Graph';
-// import Graph2 from '../Graph2';
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div, List, FormItem, Input } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Header, Button, Group, SimpleCell, Div, FormItem, Input } from '@vkontakte/vkui';
 
-
+/**
+ * Основной экран приложения
+ * 
+ * @author Alexandr Gorlov <a.gorlov@gmail.com>
+ */
 class Home extends Component {
 	constructor(props) {
         super(props);
@@ -34,13 +36,27 @@ class Home extends Component {
 				<Group>
 
 					{/* История про Франклина Рузвельта, про Эйншейна, пример с ипотекой, Машиной итд */}
-					<Div>
+					<Div className="appdescr">
+						<Div>Магия в кратном увеличении сумм инвестирования, нужна цель и регулярность пополнения.</Div>
+					
+					 	<Div>
+							Вот например, какой капиталл можно сформировать: каждый месяц докупаю на 1350р активов
+							и делаю так 30 лет, при средней доходности 20% годовых мой капиталл <span className="app-descr__amplify">приумножится в 64 раза</span>:
+						</Div>
 
-					Магия в кратном увеличении сумм. Нужна цель, и регулярность пополнения.<br/>
+					{/* Например, пополняем на 2000р в месяц счет, покупаем активы.
+					Предположим что средняя доходность будет 15% годовых.
+					Через 5 лет у нас будет 177 000 руб
+					Через 10 лет - 550 000 руб
+					Через 15 лет - 1 337 000 руб
+					Через 20 лет - 2 994 000 руб
+					Через 25 лет - 6,5 млн руб
+					Через 30 лет - 13,8 млн руб */}
+
 				
-					https://moneypapa.ru/slozhnyj-procent-ego-chudo-sila/<br/>
+					{/* https://moneypapa.ru/slozhnyj-procent-ego-chudo-sila/<br/> */}
 				
-					life and invest
+					{/* life and invest */}
 					</Div>
 
 				</Group>
@@ -98,34 +114,17 @@ class Home extends Component {
 					<Graph data={this.state['накопление для вывода']}></Graph>
 					{/* <Graph data={this.state['накопление по периодам']}></Graph> */}
 
-					<List>
-						{/* <Cell expandable before={<Div>месяц</Div>}>Сумма, ₽</Cell> */}
-						<div className="sumstring">
-							<div className="sumstring__month">{this.state['период для вывода']}</div> Сумма, ₽
-						</div>
-						{this.state['накопление для вывода'].map(
-							(sum, index) => (<div className="sumstring" key={index}>
-												<div className="sumstring__month">{index + 1}</div>
-												{Math.round(sum)}
-												{/* <span className="sumstring__delta">+100</span> */}
-											</div>)
-						)}
-					</List>
-				</Group>				
-		
+					{this.state['накопление для вывода'].map(
+						(p, index) => (
+									<SimpleCell
+										key={index}
+              							expandable
+              							indicator={Math.round(p.sum) + ' ₽'} 
+            						>
+              						{p.step} год
+            						</SimpleCell>))}
+				</Group>							
 				
-				
-		
-				<Group header={<Header mode="secondary">Navigation Example</Header>}>
-					<Div>
-						<Button stretched size="l" mode="secondary" onClick={this.props.go} data-to="persik">
-							Что такое магия сложного процента?
-						</Button>
-					</Div>
-				</Group>
-		
-		
-		
 			</Panel>
 		);
 	}
@@ -182,33 +181,21 @@ class Home extends Component {
 	 * Группировка вывода, для продолжительных горизонотов по годам
 	 * 
 	 * Если срок инвестирования больше 3х лет, группируем вывод сумм по годам
-	 * Если срок инвестирования больше 3года или меньше лет, группируем вывод сумм месяцам
 	 * 
 	 * @param {*} nakopleniePoPeriodam 
 	 * @returns 
 	 */
 	nakoplenieDliaVivoda(nakopleniePoPeriodam) {
 
-		if (nakopleniePoPeriodam.length <= 36) {
-			return {
-				period: 'Месяц',
-				nakoplenie: nakopleniePoPeriodam
-			};
-		}
-
-		// let formatter = new Intl.NumberFormat(
-		// 	'ru-RU', 
-		// 	{
-		// 		minimumFractionDigits: 0,
-		// 		maximumFractionDigits: 0
-		// 	}
-		// );
-
-
 		let nakopleniePoGodam = [ ];
 
+		let year = 1;
+
 		for (let i = 11; i < nakopleniePoPeriodam.length; i = i + 12) {
-			nakopleniePoGodam.push(nakopleniePoPeriodam[i]);
+			nakopleniePoGodam.push({
+				step: year++,
+				sum: Math.round(nakopleniePoPeriodam[i])
+			});
 		}
 
 		return {
