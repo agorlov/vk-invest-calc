@@ -23,7 +23,7 @@ npm run deploy
 ```
 
 For your CI, you can use 
- > $ env MINI_APPS_ACCESS_TOKEN=216e2ba46174a5ec88da28af8a5baf760a2b84b11cb25b6e8dcb7482952feac7856c9de5f590a7d146b8a yarn deploy
+ > $ env MINI_APPS_ACCESS_TOKEN=[deploy token] yarn deploy
 
 
 # Дела
