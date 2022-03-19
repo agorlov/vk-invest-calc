@@ -26,57 +26,6 @@ For your CI, you can use
  > $ env MINI_APPS_ACCESS_TOKEN=[deploy token] yarn deploy
 
 
-# Дела
-
-- наладить вывод для < 5 лет
-- почитать как публиковать мини приложения
-
-
-# Create VK Mini App [![npm][npm]][npm-url] [![deps][deps]][deps-url]
-
-## How to use
-
-### With NPX
-
-```bash
-npx @vkontakte/create-vk-mini-app [app-directory-name] [options]
-```
-[NPX](https://github.com/npm/npx) allows you to always use the **latest** version of the package without a global installation.
-
-### With installing the package globally
-Install the package globally via yarn
-```bash
-yarn global add @vkontakte/create-vk-mini-app
-```
-...or npm
-```bash
-npm install --global @vkontakte/create-vk-mini-app
-```
-
-and use as follows
-
-```bash
-create-vk-mini-app [app-directory-name] [options]
-```
-
-This way is less recommended because you will have to update the package yourself.
-
-### Options
-Without `--zeit` and `--surge` options 
-
-#### `--zeit`
-Vercel (Zeit) deploy
-
-Firstly, you have to create Vercel account and connect it with your GitHub profile on [vercel.com](https://vercel.com)
-
-#### `--surge <surge-domain>`
-Surge deploy
-
-Firstly, you have to create Surge account and Surge-domain on [surge.sh](https://surge.sh)
-
-#### `--help`
-Prints the synopsis and a list of options
-
 ## How to start work with app
 
 Go to created folder and run:  
